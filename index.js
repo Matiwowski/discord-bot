@@ -1,6 +1,5 @@
+require('dotenv').config();
 const { Client, GatewayIntentBits, Partials, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
-require('dotenv').config(); // Dodaj tę linię
-
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -10,7 +9,7 @@ const client = new Client({
     partials: [Partials.Channel]
 });
 
-const token = process.env.BOT_TOKEN; // Użyj zmiennej środowiskowej
+const token = process.env.BOT_TOKEN;
 
 const diseases = {
     "Grypa": {
@@ -42,12 +41,7 @@ client.once('ready', () => {
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
 
-    const member = message.guild.members.cache.get(message.author.id);
-    if (member && member.roles.cache.size > 1) {
-        return;
-    }
-
-    if (message.channel.name.includes('ticket') && message.content.includes('Umów się z lekarzem, bądź rezydentem na wizytę.')) {
+    if (message.content === '!objawy') {
         const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
