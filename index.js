@@ -1,5 +1,9 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits, Partials, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
+const express = require('express');
+const http = require('http');
+
+const app = express();
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -88,3 +92,16 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(token);
+
+// Utrzymywanie bota przy życiu
+const PORT = process.env.PORT || 3000;
+app.get('/', (req, res) => res.send('Bot is running'));
+
+app.listen(PORT, () => {
+    console.log(`Serwer działa na porcie ${PORT}`);
+});
+
+// Regularne pingowanie samego siebie co minutę
+setInterval(() => {
+    http.get(`http://localhost:${PORT}`);
+}, 60000);
