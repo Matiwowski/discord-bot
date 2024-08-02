@@ -42,16 +42,21 @@ client.on('messageCreate', async message => {
     if (message.author.bot) return;
 
     if (message.content === '!objawy') {
-        const row = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setCustomId('generate_disease')
-                    .setLabel('Generuj chorobę')
-                    .setStyle(ButtonStyle.Primary)
-            );
+        try {
+            const row = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setCustomId('generate_disease')
+                        .setLabel('Generuj chorobę')
+                        .setStyle(ButtonStyle.Primary)
+                );
 
-        await message.author.send({ content: 'Kliknij przycisk, aby wygenerować chorobę i jej objawy.', components: [row] });
-        await message.reply({ content: 'Wysłano ci wiadomość z przyciskiem do prywatnych wiadomości.' });
+            await message.author.send({ content: 'Kliknij przycisk, aby wygenerować chorobę i jej objawy.', components: [row] });
+            await message.reply({ content: 'Wysłano ci wiadomość z przyciskiem do prywatnych wiadomości.' });
+        } catch (error) {
+            console.error('Błąd wysyłania wiadomości prywatnej:', error);
+            await message.reply({ content: 'Nie mogłem wysłać ci wiadomości. Sprawdź swoje ustawienia prywatności.' });
+        }
     }
 });
 
@@ -72,8 +77,13 @@ client.on('interactionCreate', async interaction => {
             )
             .setColor('#FF0000');
 
-        await interaction.user.send({ embeds: [embed] });
-        await interaction.reply({ content: 'Wygenerowana choroba została wysłana na Twoje prywatne wiadomości.', ephemeral: true });
+        try {
+            await interaction.user.send({ embeds: [embed] });
+            await interaction.reply({ content: 'Wygenerowana choroba została wysłana na Twoje prywatne wiadomości.', ephemeral: true });
+        } catch (error) {
+            console.error('Błąd wysyłania wiadomości prywatnej:', error);
+            await interaction.reply({ content: 'Nie mogłem wysłać ci wiadomości. Sprawdź swoje ustawienia prywatności.', ephemeral: true });
+        }
     }
 });
 
