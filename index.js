@@ -10,7 +10,7 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent
     ],
-    partials: [Partials.Channel]
+    partials: [Partials.Channel, Partials.Message, Partials.Reaction]
 });
 
 const token = process.env.BOT_TOKEN;
@@ -43,12 +43,32 @@ const diseases = {
     }
 };
 
+
 client.once('ready', () => {
     console.log('Bot jest online!');
 });
 
 client.on('messageCreate', async message => {
-    if (message.author.bot) return;
+    if (message.author.bot && message.author.username === 'Ticket Tool') {
+        console.log('Received message content:', message.content);
+        console.log('Message length:', message.content.length);
+
+        // Sprawdzenie, czy wiadomość zawiera oczekiwany fragment tekstu
+        const content = message.content.trim();
+        const requiredFragment = 'Utworzyłeś ticket na umówienie się na wizytę z lekarzem!';
+
+        // Sprawdzenie, czy fragment tekstu jest obecny w wiadomości
+        if (content.includes(requiredFragment)) {
+            try {
+                await message.channel.send('Aby wygenerować objawy wpisz !objawy');
+                console.log('Sent message: Aby wygenerować objawy wpisz !objawy');
+            } catch (error) {
+                console.error('Błąd wysyłania wiadomości:', error);
+            }
+        } else {
+            console.log('Message content does not match');
+        }
+    }
 
     if (message.content === '!objawy') {
         try {
@@ -62,6 +82,7 @@ client.on('messageCreate', async message => {
 
             await message.author.send({ content: 'Kliknij przycisk, aby wygenerować chorobę i jej objawy.', components: [row] });
             await message.reply({ content: 'Wysłano ci wiadomość z przyciskiem do prywatnych wiadomości.' });
+            console.log('Sent message with button to user DM');
         } catch (error) {
             console.error('Błąd wysyłania wiadomości prywatnej:', error);
             await message.reply({ content: 'Nie mogłem wysłać ci wiadomości. Sprawdź swoje ustawienia prywatności.' });
@@ -90,6 +111,7 @@ client.on('interactionCreate', async interaction => {
         try {
             await interaction.user.send({ embeds: [embed] });
             await interaction.reply({ content: 'Wygenerowana choroba została wysłana na Twoje prywatne wiadomości.', ephemeral: true });
+            console.log('Sent disease info to user DM');
         } catch (error) {
             console.error('Błąd wysyłania wiadomości prywatnej:', error);
             await interaction.reply({ content: 'Nie mogłem wysłać ci wiadomości. Sprawdź swoje ustawienia prywatności.', ephemeral: true });
