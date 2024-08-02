@@ -10,7 +10,7 @@ const client = new Client({
     partials: [Partials.Channel]
 });
 
-const token = 'MTI2ODg3NDQ0NjMyMDQzOTM5MA.GwsfcG.CNgEC8YQvge7G_qEi5VwMefqVbuMDidmOJ0qSA';
+const token = process.env.BOT_TOKEN;
 
 const diseases = {
     "Grypa": {
