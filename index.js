@@ -83,7 +83,4 @@ client.on('interactionCreate', async interaction => {
 
 client.login(token);
 
-const port = process.env.PORT || 3000; // Domyślny port lokalnie, jeśli nie określono
-app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
-});
+const PORT = process.env.PORT || 3000;
