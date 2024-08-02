@@ -18,23 +18,28 @@ const token = process.env.BOT_TOKEN;
 const diseases = {
     "Grypa": {
         mandatorySymptoms: ["Gorączka", "Kaszel", "Ból głowy"],
-        optionalSymptoms: ["Zmęczenie", "Ból mięśni", "Nudności"]
+        optionalSymptoms: ["Zmęczenie", "Ból mięśni", "Nudności"],
+        testResults: ["Powiększone węzły chłonne", "Podwyższone ciśnienie", "Gorączka"]
     },
     "Covid-19": {
         mandatorySymptoms: ["Gorączka", "Kaszel", "Duszność"],
-        optionalSymptoms: ["Ból gardła", "Utrata smaku", "Utrata węchu"]
+        optionalSymptoms: ["Ból gardła", "Utrata smaku", "Utrata węchu"],
+        testResults: ["Powiększone węzły chłonne", "Podwyższone ciśnienie", "Gorączka", "Zmniejszona saturacja tlenu"]
     },
     "Przeziębienie": {
         mandatorySymptoms: ["Katar", "Ból gardła"],
-        optionalSymptoms: ["Kaszel", "Ból głowy", "Zmęczenie"]
+        optionalSymptoms: ["Kaszel", "Ból głowy", "Zmęczenie"],
+        testResults: ["Lekko podwyższone ciśnienie", "Niewielka gorączka"]
     },
     "Zapalenie oskrzeli": {
         mandatorySymptoms: ["Kaszel", "Ból w klatce piersiowej"],
-        optionalSymptoms: ["Gorączka", "Duszność", "Zmęczenie"]
+        optionalSymptoms: ["Gorączka", "Duszność", "Zmęczenie"],
+        testResults: ["Podwyższone ciśnienie", "Powiększone węzły chłonne", "Gorączka"]
     },
     "Angina": {
         mandatorySymptoms: ["Ból gardła", "Gorączka"],
-        optionalSymptoms: ["Ból głowy", "Ból mięśni", "Trudności w przełykaniu"]
+        optionalSymptoms: ["Ból głowy", "Ból mięśni", "Trudności w przełykaniu"],
+        testResults: ["Powiększone węzły chłonne", "Gorączka", "Obrzęk gardła"]
     }
 };
 
@@ -70,14 +75,15 @@ client.on('interactionCreate', async interaction => {
     if (interaction.customId === 'generate_disease') {
         const diseaseNames = Object.keys(diseases);
         const randomDisease = diseaseNames[Math.floor(Math.random() * diseaseNames.length)];
-        const { mandatorySymptoms, optionalSymptoms } = diseases[randomDisease];
+        const { mandatorySymptoms, optionalSymptoms, testResults } = diseases[randomDisease];
 
         const embed = new EmbedBuilder()
             .setTitle(`Choroba: ${randomDisease}`)
-            .setDescription('Oto objawy:')
+            .setDescription('Oto objawy i wyniki badań:')
             .addFields(
                 { name: 'Objawy obowiązkowe', value: mandatorySymptoms.join(', '), inline: false },
-                { name: 'Objawy nieobowiązkowe', value: optionalSymptoms.join(', '), inline: false }
+                { name: 'Objawy nieobowiązkowe', value: optionalSymptoms.join(', '), inline: false },
+                { name: 'Wyniki badań', value: testResults.join(', '), inline: false }
             )
             .setColor('#FF0000');
 
