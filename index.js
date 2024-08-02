@@ -50,7 +50,8 @@ client.on('messageCreate', async message => {
                     .setStyle(ButtonStyle.Primary)
             );
 
-        await message.channel.send({ content: 'Kliknij przycisk, aby wygenerować chorobę i jej objawy.', components: [row] });
+        await message.author.send({ content: 'Kliknij przycisk, aby wygenerować chorobę i jej objawy.', components: [row] });
+        await message.reply({ content: 'Wysłano ci wiadomość z przyciskiem do prywatnych wiadomości.' });
     }
 });
 
@@ -71,7 +72,8 @@ client.on('interactionCreate', async interaction => {
             )
             .setColor('#FF0000');
 
-        await interaction.reply({ embeds: [embed] });
+        await interaction.user.send({ embeds: [embed] });
+        await interaction.reply({ content: 'Wygenerowana choroba została wysłana na Twoje prywatne wiadomości.', ephemeral: true });
     }
 });
 
