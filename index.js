@@ -1,5 +1,5 @@
 const { Client, GatewayIntentBits, Partials, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } = require('discord.js');
-require('dotenv').config(); // Dodajemy do obsługi zmiennych środowiskowych
+require('dotenv').config(); // Dodaj tę linię
 
 const client = new Client({
     intents: [
@@ -10,7 +10,7 @@ const client = new Client({
     partials: [Partials.Channel]
 });
 
-const token = process.env.BOT_TOKEN;
+const token = process.env.BOT_TOKEN; // Użyj zmiennej środowiskowej
 
 const diseases = {
     "Grypa": {
@@ -42,24 +42,21 @@ client.once('ready', () => {
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
 
-    // Sprawdź, czy wiadomość jest komendą `!objawy`
-    if (message.content === '!objawy') {
+    const member = message.guild.members.cache.get(message.author.id);
+    if (member && member.roles.cache.size > 1) {
+        return;
+    }
+
+    if (message.channel.name.includes('ticket') && message.content.includes('Umów się z lekarzem, bądź rezydentem na wizytę.')) {
         const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId('generate_disease')
                     .setLabel('Generuj chorobę')
-                    .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder()
-                    .setCustomId('generate_disease_no')
-                    .setLabel('Nie')
-                    .setStyle(ButtonStyle.Danger)
+                    .setStyle(ButtonStyle.Primary)
             );
 
-        await message.channel.send({ 
-            content: 'Kliknij przycisk, aby wygenerować chorobę i jej objawy lub odrzuć.', 
-            components: [row] 
-        });
+        await message.channel.send({ content: 'Kliknij przycisk, aby wygenerować chorobę i jej objawy.', components: [row] });
     }
 });
 
@@ -81,10 +78,12 @@ client.on('interactionCreate', async interaction => {
             .setColor('#FF0000');
 
         await interaction.reply({ embeds: [embed] });
-    } else if (interaction.customId === 'generate_disease_no') {
-        await interaction.reply({ content: 'Nie wygenerowano objawów.', ephemeral: true });
     }
 });
 
-// Upewnij się, że token jest w zmiennych środowiskowych
 client.login(token);
+
+const port = process.env.PORT || 3000; // Domyślny port lokalnie, jeśli nie określono
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+});
