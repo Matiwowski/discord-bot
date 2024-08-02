@@ -10,7 +10,7 @@ const client = new Client({
     partials: [Partials.Channel]
 });
 
-const token = 'MTI2ODg3NDQ0NjMyMDQzOTM5MA.GSUbFN.sszpkHo8hWIXDgDFTDA6XHli876dP9B6Rl6e4s';
+const token = 'MTI2ODg3NDQ0NjMyMDQzOTM5MA.GwsfcG.CNgEC8YQvge7G_qEi5VwMefqVbuMDidmOJ0qSA';
 
 const diseases = {
     "Grypa": {
