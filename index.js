@@ -145,7 +145,7 @@ client.on('interactionCreate', async interaction => {
 
         try {
             await interaction.user.send({ embeds: [embed] });
-            await interaction.reply({ content: '0to twoja choroba oraz podpowiedzi do jej odegrania. Pamiętaj, to jest tylko przykład - możesz wybrać inną chorobę do odegrania, a także łączyć wygenerowane/własne pomysły. Życzę ci miłej zabawy, do zobaczenia!.', ephemeral: true });
+            await interaction.reply({ content: 'Oto twoja choroba oraz podpowiedzi do jej odegrania. Pamiętaj, to jest tylko przykład - możesz wybrać inną chorobę do odegrania, a także łączyć wygenerowane/własne pomysły. Życzę ci miłej zabawy, do zobaczenia!.', ephemeral: true });
             console.log('Sent disease info to user DM');
         } catch (error) {
             console.error('Błąd wysyłania wiadomości prywatnej:', error);
