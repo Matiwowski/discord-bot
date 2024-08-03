@@ -64,7 +64,7 @@ const diseases = {
 "Pozaszpitalne zapalenie płuc (PZP)": {
         mandatorySymptoms: ["Ból w klatce piersiowej", "Kaszel", "Gorączka"],
         optionalSymptoms: ["Dreszcze", "Zimne poty", "Ból mięśni"],
-        testResults: ["Gorączka", "Tachykardia (przyśpieszona akcja serca)", "Obniżona saturacja (SpO2 < 95%)", "Podczas osłuchiwania klatki piersiowej stwierdza się: trzeszczenia i/lub szmer oskrzelowy", "Stężenie CRP podwyższone (> 20mg/l)", "RTG klatki piersiowej w projekcji tylno przedniej (PA) i bocznej uwidaczniają: zacieniania miąższowe płuc", "TK uwidacznia zmiany w miąższu płuc o charakterze zapalnym", "USG: naciek w miąższu płuc", "posiew plwociny i krwi w kierunku MRSA: ujemy [-]"; "popłuczyny z oskrzeli i płyn z płukania oskrzelowo-pęcherzykowego wskazuje na zakażenie bakteryjne"]
+        testResults: ["Gorączka", "Tachykardia (przyśpieszona akcja serca)", "Obniżona saturacja (SpO2 < 95%)", "Podczas osłuchiwania klatki piersiowej stwierdza się: trzeszczenia i/lub szmer oskrzelowy", "Stężenie CRP podwyższone (> 20mg/l)", "RTG klatki piersiowej w projekcji tylno przedniej (PA) i bocznej uwidaczniają: zacieniania miąższowe płuc", "TK uwidacznia zmiany w miąższu płuc o charakterze zapalnym", "USG: naciek w miąższu płuc", "posiew plwociny i krwi w kierunku MRSA: ujemy [-]", "popłuczyny z oskrzeli i płyn z płukania oskrzelowo-pęcherzykowego wskazuje na zakażenie bakteryjne"]
     },
 "Zakażenie norowirusami": {
         mandatorySymptoms: ["Wodnista biegunka", "Nudności", "Ból brzucha", "Pogorszone samopoczucie"],
