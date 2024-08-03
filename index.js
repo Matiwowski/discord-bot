@@ -16,7 +16,7 @@ const client = new Client({
 const token = process.env.BOT_TOKEN;
 
 const diseases = {
-    "Grypa": {
+"Grypa": {
         mandatorySymptoms: ["Gorączka", "Suchy kaszel", "Ból głowy w okolicach czoła"],
         optionalSymptoms: ["Zmęczenie", "Ból mięśni", "Nudności", "Biegunka", "Wymioty"],
         testResults: ["Powiększone węzły chłonne", "Podwyższone ciśnienie", "Gorączka", "Szybkie testy wirusowe w kierunku gypy są pozytywne (RIDT: +)", "RT-PCR wskazuje na występowanie materiału genetycznego wirusa grypy"]
