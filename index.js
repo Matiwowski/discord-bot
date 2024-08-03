@@ -95,7 +95,7 @@ client.on('messageCreate', async message => {
         // Sprawdzenie, czy fragment tekstu jest obecny w wiadomości
         if (content.includes(requiredFragment)) {
             try {
-                await message.channel.send('Aby wygenerować objawy wpisz !objawy');
+                await message.channel.send('Psst! Potrzebujesz detoksylacji dla postaci ale nie masz pomysłu w jaki sposób to zagrać? Jestem tutaj aby ci pomóc, wystarczy że wpiszesz komendę !objawy a ja zajmę się resztą :)');
                 console.log('Sent message: Aby wygenerować objawy wpisz !objawy');
             } catch (error) {
                 console.error('Błąd wysyłania wiadomości:', error);
@@ -145,11 +145,11 @@ client.on('interactionCreate', async interaction => {
 
         try {
             await interaction.user.send({ embeds: [embed] });
-            await interaction.reply({ content: 'Wygenerowana choroba została wysłana na Twoje prywatne wiadomości.', ephemeral: true });
+            await interaction.reply({ content: '0to twoja choroba oraz podpowiedzi do jej odegrania. Pamiętaj, to jest tylko przykład - możesz wybrać inną chorobę do odegrania, a także łączyć wygenerowane/własne pomysły. Życzę ci miłej zabawy, do zobaczenia!.', ephemeral: true });
             console.log('Sent disease info to user DM');
         } catch (error) {
             console.error('Błąd wysyłania wiadomości prywatnej:', error);
-            await interaction.reply({ content: 'Nie mogłem wysłać ci wiadomości. Sprawdź swoje ustawienia prywatności.', ephemeral: true });
+            await interaction.reply({ content: 'Nie mogłem wysłać ci wiadomości. Sprawdź swoje ustawienia prywatności, spróbuj ponownie.', ephemeral: true });
         }
     }
 });
