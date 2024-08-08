@@ -34,7 +34,7 @@ const diseases = {
 "Ostre zapalenie trzustki (OZT)": {
         mandatorySymptoms: ["Nagły, bardzo silny ból brzucha (w nadbrzuszu)", "Nudności", "Wymioty nieprzynoszące ulgi", "Gorączka", "Osłabienie"],
         optionalSymptoms: ["Ból brzucha promieniuje do kręgosłupa", "Ból w okolicy pępka"],
-        testResults: ["Gorączka", "Osłabienie lub zniesienie szmerów perystaltycznych jelit", "Wzmożone napięcie powłok brzusznych", "Tachykardia (przyśpieszona akcja serca)", "Zwiękosza aktywność enzymów trzustkowych (>=3x norma)", "Zwiększone stęzenie CRP", "Zwiększone stężenie kreatyniny w surowicy", "USG: powiększenie i zatarcie granic trzustki", "Zwiększona aktywność lipazy w surowicy"]
+        testResults: ["Gorączka", "Osłabienie lub zniesienie szmerów perystaltycznych jelit", "Wzmożone napięcie powłok brzusznych", "Tachykardia (przyśpieszona akcja serca)", "Zwiększona aktywność enzymów trzustkowych (>=3x norma)", "Zwiększone stęzenie CRP", "Zwiększone stężenie kreatyniny w surowicy", "USG: powiększenie i zatarcie granic trzustki", "Zwiększona aktywność lipazy w surowicy"]
     },
 "Niepowikłane zapalenie pęcherza moczowego": {
         mandatorySymptoms: ["Ból podczas oddawania moczu", "Częste oddawanie moczu", "Ból brzucha (w okolicy nadłonowej)"],
@@ -69,7 +69,7 @@ const diseases = {
 "Zakażenie norowirusami": {
         mandatorySymptoms: ["Wodnista biegunka", "Nudności", "Ból brzucha", "Pogorszone samopoczucie"],
         optionalSymptoms: ["Wymioty", "Ból mięśni"],
-        testResults: ["RT-qCPR pobranego od pacjetna materiału wykazuje zakażenie norowirusami"]
+        testResults: ["RT-qPCR pobranego od pacjetna materiału wykazuje zakażenie norowirusami"]
     },
 "Trądzik bez hiperandrogenizmu": {
         mandatorySymptoms: ["Krosty na twarzy"],
