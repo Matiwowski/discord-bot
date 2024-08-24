@@ -95,7 +95,7 @@ client.on('messageCreate', async message => {
         // Sprawdzenie, czy fragment tekstu jest obecny w wiadomości
         if (content.includes(requiredFragment)) {
             try {
-                await message.channel.send('Cześć! Potrzebujesz detoksylacji dla postaci ale nie masz pomysłu w jaki sposób to zagrać? Jestem tutaj aby ci pomóc, wystarczy że wpiszesz komendę !objawy a ja zajmę się resztą :)');
+                await message.channel.send('Cześć! Potrzebujesz detoksykacji dla postaci ale nie masz pomysłu w jaki sposób to zagrać? Jestem tutaj aby ci pomóc, wystarczy że wpiszesz komendę !objawy a ja zajmę się resztą :)');
                 console.log('Sent message: Aby wygenerować objawy wpisz !objawy');
             } catch (error) {
                 console.error('Błąd wysyłania wiadomości:', error);
