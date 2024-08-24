@@ -166,5 +166,5 @@ app.listen(PORT, () => {
 
 // Regularne pingowanie samego siebie co minutę
 setInterval(() => {
-    http.get(`http://localhost:${PORT}`);
+    http.get(`https://discord-bot-ucid.onrender.com`);
 }, 60000);
